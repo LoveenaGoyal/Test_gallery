@@ -1,0 +1,16 @@
+<p class="style2 display-4 text-center text-warning"> 
+  <strong>Welcome <%= @user.username.capitalize %> ! </strong>
+</p>
+<p class="text-center text-success">This is your overview page. When you add a new album or bookmark an album it will appear here.</p>
+<div class="margin d-flex flex-row ">
+  <% @user.albums.each do |album| %>
+  <div class="card mx-5 border border-danger rounded image2 " style="width: 14rem;">
+    <div class="card-body">
+      <h3 class="card-title border-bottom border-success pb-2 style3 text-center"><%= link_to album.title, album_posts_path(album), class:'text-danger' %></h3>
+      <h4 class="card-text py-2 font-weight-bold"><i><%= album.text%></i></h4>
+      <h6 class="card-link pt-2"><%= link_to "Actions", album_path(album), class:'font-weight-bold'%></h6>
+    </div>
+  </div>
+  <%end%>
+</div>
+

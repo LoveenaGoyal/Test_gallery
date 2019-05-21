@@ -1,0 +1,11 @@
+<% @posts.each do |p|%>
+<div class="m-5 text-center" style="width:300px;height:300px">
+  <h4 class="text-danger"><%= p.title.capitalize%></h4>
+  <%= image_tag(p.image, style:'width:250px;height:250px')%>
+  <p class="font-weight-bold border-bottom border-dark">
+  <%= link_to "View", url_for(p.image) %>
+  <%= link_to "Download", p.image, download: p.image %>
+  <%= link_to "Delete", album_post_path(@album,p), method: :delete, data: {confirm: "Are you sure?"} %>
+  </p>
+</div>
+<%end%>

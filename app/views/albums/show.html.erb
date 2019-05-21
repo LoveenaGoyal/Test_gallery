@@ -1,0 +1,19 @@
+<h2 class="text-center style2 text-warning">Have a look at your posts!</h2>
+<p class="text-center">
+  <strong><%= @album.title.upcase %></strong>
+  </p>
+<p class="text-center">
+  <strong>-- <i><%= @album.text %></strong></i>
+</p>
+<p> <% @album.tags.each do |tag|%>
+<%= tag.title %>
+<%end%>
+</p>
+<div class="text-center">
+<%= link_to "Back", user_path(@album.user.id), class:"text-success font-weight-bold" %>
+<%= link_to "Edit", edit_album_path(@album), class:"font-weight-bold"%>
+<%= link_to "Delete", album_path(@album), method: :delete, data: {confirm: "Are you sure?"}, class:"text-danger font-weight-bold"%>
+</div>
+<% @album.posts.each do |p|%>
+  <%= image_tag(p.image, style:"width:250px;height:250px", class:'mx-4')%>
+<%end%>

@@ -1,0 +1,12 @@
+<%= form_for [@album, @post] do |form| %>
+  <p>
+    <%= form.label :Title %>
+    <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.label :Choose_your_image %>
+    <%= form.file_field :image %>
+  <p>
+    <%= form.submit %>
+  </p>
+<%end%>

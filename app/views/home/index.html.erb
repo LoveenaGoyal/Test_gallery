@@ -1,0 +1,8 @@
+<div>
+  <p class="style text-center mt-5 display-1">Photo Albums Reinvented</p>
+  <p class="text-center mt-5 font-weight-bold"><i>The fastest way to your most beautiful album. Share online or order as photo book.
+</i></p>
+  <%=link_to "Let's start", new_user_registration_path, class:"btn btn-outline-primary mt-5 position font-weight-bold" %>
+  <%= image_tag("home.png", style:"width:100%;height:500px;opacity:0.4",class:'home')%>
+</div>
+<%=link_to 'Sign out',destroy_user_session_path, :method => :delete %>

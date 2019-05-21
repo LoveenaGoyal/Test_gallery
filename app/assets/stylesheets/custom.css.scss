@@ -1,0 +1,50 @@
+@import 'bootstrap';
+$font1:'Libre Baskerville', serif;
+$font2:'Just Another Hand', cursive;
+$font3:'Lobster', cursive;
+$font4:'Acme', sans-serif;
+body{
+	font-family: $font1;
+}
+// .image{
+// 	background-image : url("blur.jpg");
+// 	background-size : cover;
+// }
+.image{
+	background: url("blur2.jpg") ;
+	background-size: cover;
+}
+.image2{
+	background: url('gallery.png') no-repeat;
+	background-size: contain;
+}
+.abc{
+	font-weight: bold;
+	height: 5%;
+	background-color: rgba(1,1,1,0.1)
+}
+.margin{
+	margin-top: 2%
+}
+.image3{
+	background: url('album.jpg') no-repeat
+}
+.home{
+	position: absolute;
+	top:10%;
+	left:0%;
+	z-index: -1;
+}
+.style{
+	font-family: $font2;
+}
+.position{
+	margin-left: 50%
+}
+.style2{
+	font-family: $font3;
+}
+.style3{
+	font-family: $font4;
+}
+

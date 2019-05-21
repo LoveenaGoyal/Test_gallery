@@ -1,0 +1,66 @@
+<div class="container ">
+  <div class="row mt-5">
+    <div class="col-4 image3">
+    </div>
+    <div class="col-8 w-25 mx-auto p-4">
+      <%= form_for @album do |form| %>
+        <% if @album.errors.any? %>
+          <div>
+            <h2>
+              <%= pluralize(@album.errors.count, 'error') %>
+              prohibited this album from being saved:
+            </h2>
+            <ul>
+              <% @album.errors.full_messages.each do |msg|%>
+                <li><%= msg %></li>
+              <%end%>
+            </ul>
+          </div>
+        <%end%>
+        <div class="container">
+          <div class="row pt-2">
+            <div class="col-4">
+              <h5 class="text-info font-weight-bold"><%= form.label :Title %></h5>
+            </div>
+            <div class="col-8">
+              <%= form.text_field :title, class:'w-75 small rounded p-2'%>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-4">
+              <h5 class="text-info font-weight-bold"><%= form.label :Album_Description %></h5>
+            </div>
+            <div class="col-8">
+              <%= form.text_area :text, class:'w-75 small rounded p-2' %>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-4">
+              <h5 class="text-info font-weight-bold"><%= form.label :tag_ids, "Tags" %></h5>
+            </div>
+            <%# <%= tag.select(:tag_ids, Tag.all.collect{|p| [ p.title, p.id ]},{}, multiple: true, id: "input-tags")%>  
+            <div class="col-8">
+              <%= form.select :tag_ids, Tag.all.pluck(:title, :id), {}, { multiple: true, class: "selectize"}%>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <%= link_to 'Back', :back, class:'btn btn-danger mt-5'%>
+          <%= form.submit @album.new_record? ? "CREATE ALBUM" : "UPDATE ALBUM" , class: 'btn btn-success mt-5'%>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>
+<script>
+  $('.selectize').selectize({
+    delimiter: ',',
+    persist: false,
+    create: function(input) {
+        return {
+            value: input,
+            text: input
+        }
+    }
+});
+</script>

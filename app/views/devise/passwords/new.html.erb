@@ -1,0 +1,21 @@
+<body class="bg-light">
+  <div class="abc container col-sm-7 text-secondary p-5 rounded">
+    <h2>Forgot your password?</h2>
+
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email",class:'container w-100 bg-light rounded p-2' %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Send me reset password instructions",class:'btn btn-primary rounded font-weight-bold mt-2' %>
+      </div>
+    <% end %>
+    <div class="mt-4">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</body>

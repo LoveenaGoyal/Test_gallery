@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gallery</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster|Just+Another+Hand|Acme" rel="stylesheet">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <%=link_to image_tag("icon.png", style:"width:60px;height:50px"), root_path%>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to 'Home', root_path, class:'nav-link text-danger font-weight-bold'%>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'New Album', new_album_path, class:'nav-link text-danger font-weight-bold'%>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-info font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                User
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <%= link_to 'Profile', edit_user_registration_path, class:'dropdown-item'%>
+                <%= link_to 'Dashboard', user_path(current_user), class:'dropdown-item'%>
+                <% if current_user.admin?%>
+                  <%= link_to 'Users', users_path, class:'dropdown-item'%>
+                <%end%>
+                <div class="dropdown-divider"></div>
+                <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class:'dropdown-item'%>
+              </div>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to 'Log in', new_user_session_path, class:'nav-link btn btn-primary text-white'%>      
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Sign up', new_user_registration_path, class:'nav-link btn btn-outline-success text-success ml-2'%>      
+            </li>
+          <%end%>
+        </ul>
+      </div>
+    </nav>
+    <%= yield %>
+  </body>
+</html>
